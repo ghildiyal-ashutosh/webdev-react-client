@@ -9,7 +9,7 @@ export default class CourseCardItem extends React.Component
         <img className="card-img-top"
              src="https://picsum.photos/200/100?random"/>
         <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">{this.props.title}</h5>
             <p className="card-text">Card text.</p>
             <button href="#" className="btn btn-primary">More...</button>
         </div>

@@ -7,11 +7,11 @@ export default class CourseCardDeck extends React.Component
     {
         return(
             <div className= "card-deck">
-                <CourseCardItem/>
-                <CourseCardItem/>
-                <CourseCardItem/>
-                <CourseCardItem/>
-                <CourseCardItem/>
+                <CourseCardItem title = "Lesson-1"/>
+                <CourseCardItem title = "Lesson-2"/>
+                <CourseCardItem title = "Lesson-3"/>
+                <CourseCardItem title = "Lesson-4"/>
+                <CourseCardItem title = "Lesson-5"/>
             </div>
         );
     }
