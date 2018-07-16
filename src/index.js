@@ -5,6 +5,8 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 //import CourseCardDeck from './containers/CourseCardDeck';
 import CourseList from './containers/CourseList'
 import ModuleList from './containers/ModuleList'
+import LessonTab from './containers/LessonTab'
+import TopicPill from './containers/TopicPill'
 class WhiteBoard extends  React.Component
 {
     render()
@@ -12,6 +14,8 @@ class WhiteBoard extends  React.Component
         return (
             <div className= "container-fluid">
         <h1> WhiteBoard</h1>
+                <LessonTab/>
+                <TopicPill/>
                 <h2> Course</h2>
                 <CourseList/>
                 <h3> Module-List </h3>
