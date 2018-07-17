@@ -12,12 +12,11 @@ export default class CourseList extends React.Component
                       <th> Title</th>
                           <th>
                               <select>
-                                  <option value = "en"> Enrolled </option>
-                                  <option value = "se"> Selected </option>
-                                  <option value = "new"> New</option>
+                                  <option value = "Me"> Me </option>
+                                  <option value = "Not Enrolled"> Not Enrolled </option>
                               </select>
                           </th>
-                          <th> Date-Modified </th>
+                          <th> Date/Time-Modified </th>
                           <th> Action </th>
                   </tr>
 

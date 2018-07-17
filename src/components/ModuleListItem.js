@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../style/ModuleListItem.style.client.css'
+import styles from '../style/style.css'
 
 export default class ModuleListItem extends React.Component
 {
