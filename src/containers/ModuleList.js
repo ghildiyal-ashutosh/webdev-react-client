@@ -14,12 +14,18 @@ export default class ModuleList extends React.Component
             ]
     };
     this.titleChanged = this.titleChanged.bind(this);
+    this.createModule = this.createModule.bind(this);
 }
 
 titleChanged(event)
 {
     console.log(event.target.value);
-    this.setState({module{title:event.target.value}});
+    this.setState({module :{title:event.target.value}});
+}
+
+createModule()
+{
+    console.log(this.state.module);
 }
 
 
@@ -45,7 +51,7 @@ titleChanged(event)
                                 placeholder = "Add New Module"
                                 onChange={this.titleChanged}/>
                            </div>
-                           <div className="col-lg-2">
+                           <div onClick={this.createModule} className="col-lg-2">
                         <i className="fa fa-plus-circle fa-2x"></i>
                            </div>
                        </div>

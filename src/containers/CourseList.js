@@ -4,6 +4,32 @@ import {button} from 'react-bootstrap'
 import styles from '../style/style.css'
 export default class CourseList extends React.Component
 {
+    constructor ()
+    {
+        super();
+        this.state =
+            {
+                Course : {title : ''},
+                Courses : []
+
+        };
+        this.titleChanged = this.titleChanged.bind(this);
+        this.createCourse = this.createCourse.bind(this);
+
+    }
+
+    titleChanged(event)
+    {
+        console.log(event.target.value);
+        this.setState({Course:{title : event.target.value}});
+    }
+
+    createCourse()
+    {
+        console.log(this.state.Course);
+    }
+
+
     render()
     {
         return(
@@ -13,9 +39,10 @@ export default class CourseList extends React.Component
                 <table className= "table">
                     <thead>
                     <tr>
-                        <td>
-                        <input  className="form-control" id = "inputFld" placeholder = "Add New Course"/></td>
-                        <td>
+                        <td onChange={this.titleChanged}>
+                        <input  className="form-control" id = "inputFld" placeholder = "Add New Course"/>
+                        </td>
+                        <td onClick={this.createCourse}>
                             <i className="fa fa-plus-circle fa-2x"></i>
                         </td>
                     </tr>
