@@ -3,7 +3,7 @@ import TopicPillItem from '../components/TopicPillItem'
 
 export default class TopicPill extends React.Component {
     render() { return(
-        <ul class="nav nav-pills">
+        <ul className="nav nav-pills">
             <TopicPillItem title = "Topic 1"/>
             <TopicPillItem title = "Topic 2"/>
             <TopicPillItem title = "Topic 3"/>

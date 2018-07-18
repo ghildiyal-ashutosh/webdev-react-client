@@ -11,15 +11,18 @@ export default class CourseRow extends React.Component
             <tr>
                 <td>
                     <i className="fa fa-file"></i>
-                </td>
-                <td>
                     {this.props.title}
                 </td>
-                    <td></td>
+                <td>
+                me
+                </td>
                     <td>
+                        {this.props.timestamp}
+                        </td>
 
-                        <span className= "float-right"> <i className="fa fa-times"/></span>
-                    </td>
+                        <td>
+                            <i className="fa fa-times"/>
+                        </td>
 
             </tr>
 

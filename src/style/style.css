@@ -5,4 +5,11 @@
 .fa-file
 {
     color: blue;
+    margin-right: 8px;
+}
+.fa-plus-circle
+{
+    color : blue;
+   width: 20px;
+    height: 20px;
 }
