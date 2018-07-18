@@ -1,32 +1,88 @@
-import React from 'react'
-import CourseRow from "../components/CourseRow";
+import React from 'react';
+import CourseRow from "../components/CourseRow"
 import {button} from 'react-bootstrap'
-import styles from '../style/style.css'
+import CourseService from '../services/CourseService'
+//import styles from '../style/style.css'
+var self
+var self2
 export default class CourseList extends React.Component
 {
     constructor ()
     {
         super();
-        this.state =
-            {
-                Course : {title : ''},
-                Courses : []
+        this.courseService = CourseService.instance;
 
-        };
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
+        this.updateCourse = this.updateCourse.bind(this);
+        this.state = {courses : []};
+        self = this;
+        self2 = this;
 
+    }
+
+    componentDidMount()
+    {
+        this.findAllCourses();
     }
 
     titleChanged(event)
     {
-        console.log(event.target.value);
-        this.setState({Course:{title : event.target.value}});
+
+        this.setState({course:{title : event.target.value}});
     }
 
     createCourse()
     {
-        console.log(this.state.Course);
+        this.courseService
+            .createCourse(this.state.course)
+            .then(() => {this.findAllCourses();});
+    }
+    findAllCourses()
+    {
+
+        this.courseService
+            .findAllCourses()
+            .then( (courses) => {this.setState({courses : courses});});
+    }
+
+    deleteCourse(courseId)
+    {
+        this.courseService
+            .deleteCourse(courseId)
+            .then(() => {this.findAllCourses();});
+    }
+
+    updateCourse(courseId, ownedBy)
+    {
+
+        var status
+        if (ownedBy == "Not Enrolled")
+            status = "Me"
+        else
+            status = "Not Enrolled"
+
+        this.courseService
+            .updateCourse(courseId,status)
+            .then(() => {this.findAllCourses();});
+
+    }
+
+
+
+    renderCourses()
+    {
+        let courses = this.state.courses.map(function(course)
+        {
+       return <CourseRow key = {course.id}
+                   course = {course}
+                   delete = {self.deleteCourse}
+                         update = {self.updateCourse}
+                   />
+            });
+
+        return courses;
     }
 
 
@@ -52,18 +108,13 @@ export default class CourseList extends React.Component
                   <tr>
                       <th> Title</th>
                           <th>
-                              <select>
-                                  <option value = "Owned By"> Owned By </option>
-                                  <option value = "Me"> Me </option>
-                              </select>
+                              Owned By
                           </th>
                           <th> Date/Time of Last Modification </th>
-
                       <th> Action</th>
                   </tr>
-                  <CourseRow title = "CS 5200"/>
-                  <CourseRow title = "CS 5600"/>
-                  <CourseRow title = "CS 5800"/>
+
+                  {this.renderCourses()}
 
                     </tbody>
               </table>

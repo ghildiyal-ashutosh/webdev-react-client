@@ -1,30 +1,41 @@
-import React from 'react'
+import React from 'react';
 import styles from '../style/style.css'
+var self;
 
 
 export default class CourseRow extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+    }
+
+
     render()
     {
-        return (
 
+        return (
             <tr>
                 <td>
                     <i className="fa fa-file"></i>
-                    {this.props.title}
+                    {this.props.course.title}
                 </td>
-                <td>
-                me
+                <td onChange={() => {this.props.update(this.props.course.id, this.props.course.ownedBy)}}>
+                    <select defaultValue = {this.props.course.ownedBy}>
+                        <option value = "Not Enrolled"> Not Enrolled</option>
+                        <option value = "Me"> Me</option>
+                    </select>
+
                 </td>
                     <td>
-                        {this.props.timestamp}
-                        </td>
+                        {this.props.course.modified}
+                    </td>
 
-                        <td>
+                        <td onClick={() => {this.props.delete(this.props.course.id)}}>
                             <i className="fa fa-times"/>
                         </td>
+                </tr>
 
-            </tr>
 
 
         );
