@@ -19,6 +19,7 @@ export default class CourseList extends React.Component
         this.state = {courses : []};
         self = this;
         self2 = this;
+        this.textInput = React.createRef();
 
     }
 
@@ -31,6 +32,7 @@ export default class CourseList extends React.Component
     {
 
         this.setState({course:{title : event.target.value}});
+
     }
 
     createCourse()
@@ -38,6 +40,11 @@ export default class CourseList extends React.Component
         this.courseService
             .createCourse(this.state.course)
             .then(() => {this.findAllCourses();});
+
+        this.inputTitle.value = "";
+
+
+
     }
     findAllCourses()
     {
@@ -58,10 +65,10 @@ export default class CourseList extends React.Component
     {
 
         var status
-        if (ownedBy == "Not Enrolled")
+        if (ownedBy == "Prof")
             status = "Me"
         else
-            status = "Not Enrolled"
+            status = "Prof"
 
         this.courseService
             .updateCourse(courseId,status)
@@ -85,6 +92,11 @@ export default class CourseList extends React.Component
         return courses;
     }
 
+    resetInputField()
+    {
+
+    }
+
 
     render()
     {
@@ -96,7 +108,7 @@ export default class CourseList extends React.Component
                     <thead>
                     <tr>
                         <td onChange={this.titleChanged}>
-                        <input  className="form-control" id = "inputFld" placeholder = "Add New Course"/>
+                        <input  className="form-control" ref={el => this.inputTitle = el}  placeholder = "Add New Course"/>
                         </td>
                         <td onClick={this.createCourse}>
                             <i className="fa fa-plus-circle fa-2x"></i>

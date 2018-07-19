@@ -55,4 +55,13 @@ export default class CourseService
                 method :'PUT'
             });
     }
+
+    findCourseById(courseId)
+    {
+        return fetch (COURSE_API_URL+'/findCourse/'+courseId)
+            .then(function(response)
+            {
+                return response.json();
+            });
+    }
 }

@@ -21,3 +21,9 @@
     color : red;
     cursor: pointer;
 }
+
+.btn-lg:hover
+{
+   color : blue;
+    cursor: pointer;
+}

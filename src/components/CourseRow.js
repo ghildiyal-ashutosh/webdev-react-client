@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import styles from '../style/style.css'
 var self;
 
@@ -16,13 +17,18 @@ export default class CourseRow extends React.Component
 
         return (
             <tr>
+
                 <td>
+
+                    <Link to = {`/courses/${this.props.course.id}`}>
                     <i className="fa fa-file"></i>
-                    {this.props.course.title}
+                        {this.props.course.title}
+                    </Link>
                 </td>
+
                 <td onChange={() => {this.props.update(this.props.course.id, this.props.course.ownedBy)}}>
                     <select defaultValue = {this.props.course.ownedBy}>
-                        <option value = "Not Enrolled"> Not Enrolled</option>
+                        <option value = "Prof"> Prof</option>
                         <option value = "Me"> Me</option>
                     </select>
 
