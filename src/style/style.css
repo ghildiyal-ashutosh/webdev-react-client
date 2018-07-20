@@ -3,6 +3,15 @@
     margin-right: 8px;
     cursor: pointer;
 }
+.fa-pencil
+{
+    cursor: pointer;
+}
+.fa:hover
+{
+    color:blue;
+}
+
 .fa-file
 {
     color: blue;
@@ -24,7 +33,7 @@
 
 .btn-lg:hover
 {
-   color : blue;
+
     cursor: pointer;
 }
 #head

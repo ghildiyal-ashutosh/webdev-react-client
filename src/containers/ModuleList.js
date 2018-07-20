@@ -1,7 +1,7 @@
 import React from 'react'
 import ModuleListItem from "../components/ModuleListItem"
 import ModuleService from "../services/ModuleService";
-import {Link} from "react-router-dom"
+
 var self;
 
 export default class ModuleList extends React.Component
