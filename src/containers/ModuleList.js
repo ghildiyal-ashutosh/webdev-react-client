@@ -1,7 +1,9 @@
 import React from 'react'
 import ModuleListItem from "../components/ModuleListItem"
 import ModuleService from "../services/ModuleService";
+import {Link} from "react-router-dom"
 var self;
+
 export default class ModuleList extends React.Component
 {
     constructor(props) {
@@ -19,9 +21,11 @@ export default class ModuleList extends React.Component
     this.setCourse = this.setCourse.bind(this);
     this.deleteModule = this.deleteModule.bind(this);
     this.findAllModulesForCourse = this.findAllModulesForCourse.bind(this);
+   this.findAllModules = this.findAllModules.bind(this);
     this.moduleService = ModuleService.instance;
 
     self = this;
+
 }
 
 componentDidMount()
@@ -50,9 +54,6 @@ createModule()
         .then(() => {this.findAllModulesForCourse(this.props.courseId)});
 
     this.inputTitle.value = "";
-
-
-
 }
 
 findAllModulesForCourse(courseId)
@@ -86,8 +87,17 @@ updateModule(moduleId,courseId)
     alert("updating Module")
 }
 
+findAllModules()
+{
+    this.moduleService
+        .findAllModules()
+        .then((modules) => {this.setModules(modules)});
+}
 
-    renderListOfModules()
+
+
+
+renderListOfModules()
     {
         var courseId = this.state.courseId;
 
@@ -99,13 +109,16 @@ updateModule(moduleId,courseId)
                                     courseId = {courseId}/>
        });
 
-       return modules
+       return modules;
     }
         render()
         {
         return(
             <div>
                 <ul className= "list-group">
+                    <li>
+                        <button onClick = {this.findAllModules}> Get All Modules</button>
+                    </li>
                     <li className= "list-group-item ">
                         <div className= "row">
                         <input  ref={el => this.inputTitle = el}
@@ -116,8 +129,11 @@ updateModule(moduleId,courseId)
                         </div>
                     </li>
                     {this.renderListOfModules()}
+
                 </ul>
             </div>
         );
     }
+
+
 }

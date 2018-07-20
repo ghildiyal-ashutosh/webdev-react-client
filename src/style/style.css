@@ -27,3 +27,9 @@
    color : blue;
     cursor: pointer;
 }
+#head
+{
+    color: blue;
+    font-size: x-large;
+    font-family: Carlito;
+}
