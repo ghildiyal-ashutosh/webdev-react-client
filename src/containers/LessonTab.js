@@ -17,19 +17,98 @@ export default class LessonTabs extends React.Component {
         };
 
       this.titleChanged = this.titleChanged.bind(this);
-       this.createLesson = this.createLesson.bind(this);
-      // this.lessonService = LessonService.instance;
-
+      this.createLesson = this.createLesson.bind(this);
+      this.deleteLesson = this.deleteLesson.bind(this);
+        this.updateLesson = this.updateLesson.bind(this);
+      this.setIds = this.setIds.bind(this);
+      this.setLessons = this.setLessons.bind(this);
+      this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
+        this.lessonService = LessonService.instance;
+      self = this;
 
     }
+
+    componentDidMount()
+    {
+
+
+        this.setIds(this.props.courseId,this.props.moduleId);
+        this.findAllLessonsForModule(this.props.courseId,this.props.moduleId);
+
+    }
+
+    componentWillReceiveProps(newProps)
+    {
+       // console.log(newProps.courseId,newProps.moduleId);
+        this.setIds(newProps.courseId,newProps.moduleId);
+        this.findAllLessonsForModule(newProps.courseId,newProps.moduleId);
+
+    }
+
+    findAllLessonsForModule(courseId,moduleId)
+    {
+          this.lessonService
+              .findAllLessonsForModule(courseId,moduleId)
+              .then((lessons) => {this.setLessons(lessons)});
+
+    }
+
+
+
+    setIds(courseId,moduleId)
+    {
+        this.setState({courseId: courseId, moduleId:moduleId});
+    }
+
+    setLessons(lessons)
+    {
+        this.setState({lessons:lessons});
+    }
+
+
 
     titleChanged(event)
     {
         this.setState({lesson:{title: event.target.value,id: 0}});
     }
+
     createLesson()
     {
-        console.log(this.state);
+
+      //console.log(this.state.courseId,this.state.moduleId);
+        this.lessonService
+            .createLesson(this.state.courseId,this.state.moduleId,this.state.lesson)
+            .then(() => {this.findAllLessonsForModule(this.state.courseId,this.state.moduleId)});
+
+        this.inputTitle.value = "";
+    }
+
+    deleteLesson(courseId,moduleId,lessonId)
+    {
+        console.log(courseId,moduleId,lessonId);
+    }
+
+    updateLesson(courseId,moduleId,lessonId)
+    {
+        console.log(courseId,moduleId,lessonId);
+    }
+
+    renderLessons()
+    {
+        var courseId = this.state.courseId;
+        var moduleId = this.state.moduleId;
+
+        let lessons = this.state.lessons.map((lesson) =>
+        {
+            return <LessonTabItem courseId = {courseId}
+                                  moduleId = {moduleId}
+                                  lesson = {lesson}
+                                  delete = {self.deleteLesson}
+                                  update = {self.updateLesson}
+                                  key = {lesson.id}/>
+        });
+        return lessons;
+
     }
 
     render() {
@@ -37,10 +116,7 @@ export default class LessonTabs extends React.Component {
             <ul>
                 <li>
            <ul className="nav nav-tabs">
-            <LessonTabItem title = "Lesson 1"/>
-            <LessonTabItem title = "Lesson 2"/>
-            <LessonTabItem title = "Lesson 3"/>
-            <LessonTabItem title = "Lesson 4"/>
+               {this.renderLessons()}
         </ul>
                 </li>
                 <div className="row">
