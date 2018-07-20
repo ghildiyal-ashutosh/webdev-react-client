@@ -52,15 +52,14 @@ export default class CourseEditor extends React.Component {
 
                 <div className="row">
                     <div className="col-4">
-                        <ModuleList courseId = {this.state.courseId}/>
+                        <ModuleList courseId = {this.state.courseId} title = {this.state.title}/>
                     </div>
 
                     <div className="col-8">
                     <Route path = "/courses/:courseId/module/:moduleId"
                             component={ModuleEditor}/>
                     </div>
-
-                    </div>
+                </div>
             </div>
                 );
 

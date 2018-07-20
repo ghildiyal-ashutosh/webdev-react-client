@@ -19,7 +19,7 @@ export default class CourseList extends React.Component
         this.state = {courses : []};
         self = this;
         self2 = this;
-        this.textInput = React.createRef();
+
 
     }
 
