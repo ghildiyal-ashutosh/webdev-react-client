@@ -117,7 +117,8 @@ renderListOfModules()
             <div>
                 <ul className= "list-group">
                     <li>
-                        <button onClick = {this.findAllModules}> Get All Modules</button>
+                        <button className= "btn-sm"
+                            onClick = {this.findAllModules}> Get All Modules</button>
                     </li>
                     <li className= "list-group-item ">
                         <div className= "row">

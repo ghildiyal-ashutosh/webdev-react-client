@@ -19,10 +19,11 @@ export default class LessonTabs extends React.Component {
       this.titleChanged = this.titleChanged.bind(this);
       this.createLesson = this.createLesson.bind(this);
       this.deleteLesson = this.deleteLesson.bind(this);
-        this.updateLesson = this.updateLesson.bind(this);
+      this.updateLesson = this.updateLesson.bind(this);
       this.setIds = this.setIds.bind(this);
       this.setLessons = this.setLessons.bind(this);
       this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
+      this.findAllLessons = this.findAllLessons.bind(this);
         this.lessonService = LessonService.instance;
       self = this;
 
@@ -33,7 +34,7 @@ export default class LessonTabs extends React.Component {
 
 
         this.setIds(this.props.courseId,this.props.moduleId);
-        this.findAllLessonsForModule(this.props.courseId,this.props.moduleId);
+     //   this.findAllLessonsForModule(this.props.courseId,this.props.moduleId);
 
     }
 
@@ -51,6 +52,13 @@ export default class LessonTabs extends React.Component {
               .findAllLessonsForModule(courseId,moduleId)
               .then((lessons) => {this.setLessons(lessons)});
 
+    }
+
+    findAllLessons()
+    {
+        this.lessonService
+            .findAllLessons()
+            .then((lessons) => {this.setLessons(lessons)});
     }
 
 
@@ -85,7 +93,9 @@ export default class LessonTabs extends React.Component {
 
     deleteLesson(courseId,moduleId,lessonId)
     {
-        console.log(courseId,moduleId,lessonId);
+        this.lessonService
+            .deleteLesson(courseId,moduleId,lessonId)
+            .then(()=> {this.findAllLessonsForModule(courseId,moduleId)});
     }
 
     updateLesson(courseId,moduleId,lessonId)
@@ -119,6 +129,11 @@ export default class LessonTabs extends React.Component {
                {this.renderLessons()}
         </ul>
                 </li>
+                <li>
+                    <button className= "btn-sm"
+                        onClick={this.findAllLessons}> Get All Lessons</button>
+                </li>
+
                 <div className="row">
                     <input  ref={el => this.inputTitle = el}
                             className="form-control col-10"
@@ -127,5 +142,7 @@ export default class LessonTabs extends React.Component {
 
                     <i onClick={this.createLesson} className="fa fa-plus-circle col-1"></i>
                 </div>
+
+
             </ul>
     );}}

@@ -14,7 +14,7 @@ export default class CourseManager extends  React.Component
             <div className = "container-fluid">
                 <h1> Course-Manager</h1>
                 <Link to = "/courses">
-                    <button className="btn-lg"> Courses</button>
+                    <button className="btn-sm"> Courses</button>
                 </Link>
                 <Route path = "/courses" component = {CourseList}/>
                 <Route path = "/courses/:courseId" component = {CourseEditor}/>
