@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import styles from '../style/style.css'
 
 export default class LessonTabItem extends React.Component
@@ -18,8 +19,9 @@ export default class LessonTabItem extends React.Component
                     <i onClick =  {() => {this.props.update(this.props.courseId,this.props.moduleId,this.props.lesson.id)}}
                         className="fa fa-pencil"/>
             </span>
-                    <a
-                        className="nav-link">{this.props.lesson.title}</a>
+                    <Link to =
+                              {`/courses/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}
+                        className="nav-link">{this.props.lesson.title}</Link>
                 </li>
             );
         }

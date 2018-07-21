@@ -64,4 +64,15 @@ export default class ModuleService {
 
 
     }
+
+    findLessonById(courseId,moduleId,lessonId)
+    {
+        var url = LESSON_API_URL.replace('CID', courseId).replace('MID', moduleId);
+        return fetch(url+'/'+lessonId)
+                      .then(function (response)
+                      {
+                          return response.json();
+
+                      });
+    }
 }

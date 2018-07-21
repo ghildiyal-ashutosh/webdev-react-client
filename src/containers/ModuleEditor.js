@@ -1,6 +1,9 @@
 import React from 'react'
 import ModuleService from "../services/ModuleService"
 import  LessonTab from "../containers/LessonTab"
+import {Route} from "react-router-dom"
+import LessonEditor from "../containers/LessonEditor"
+
 import styles from "../style/style.css"
 
 export default class ModuleEditor extends React.Component
@@ -50,6 +53,12 @@ export default class ModuleEditor extends React.Component
             <div>
             <h1 id ="head"> Editing Module: {this.state.moduleTitle} </h1>
                 <LessonTab courseId = {this.state.courseId} moduleId = {this.state.moduleId}/>
+
+
+                <div>
+                    <Route path = "/courses/:courseId/module/:moduleId/lesson/:lessonId"
+                           component={LessonEditor}/>
+                </div>
 
             </div>
         )
