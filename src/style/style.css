@@ -6,10 +6,11 @@
 .fa-pencil
 {
     cursor: pointer;
+    margin-right: 8px;
 }
 .fa:hover
 {
-    color:blue;
+    color:lawngreen;
 }
 
 .fa-file
@@ -19,8 +20,15 @@
 }
 .fa-plus-circle
 {
-    color : blue;
+    color : deepskyblue;
    font-size: 30px;
+    cursor: pointer;
+}
+
+.fa-check-circle
+{
+    color : deepskyblue;
+    font-size: 30px;
     cursor: pointer;
 }
 
@@ -42,4 +50,9 @@
     color: blue;
     font-size: x-large;
     font-family: Carlito;
+}
+
+#body
+{
+    background-image: url("background.jpeg");
 }

@@ -20,7 +20,7 @@ export default class ModuleListItem extends React.Component
                         <span className="float-right">
                      <i onClick={()=>{this.props.delete(this.props.module.id, this.props.courseId)}}
                         className="fa fa-trash"/>
-                     <i onClick={()=>{this.props.update(this.props.module.id, this.props.courseId)}}
+                     <i onClick={()=> {this.props.load(this.props.courseId,this.props.module)}}
                                className="fa fa-pencil"/>
            </span>
                     </li>

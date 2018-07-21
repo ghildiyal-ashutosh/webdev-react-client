@@ -2,7 +2,9 @@ import React from 'react'
 import ModuleListItem from "../components/ModuleListItem"
 import ModuleService from "../services/ModuleService";
 
-var self;
+var self, lmodule,lcourseId;
+lmodule = {title:'',id: 0};
+lcourseId = 0;
 
 export default class ModuleList extends React.Component
 {
@@ -11,7 +13,7 @@ export default class ModuleList extends React.Component
     this.state = {
         courseId: '',
         title: '',
-        module: {title: ''},
+        module: {title: '',id : ''},
         modules: []
     };
 
@@ -22,8 +24,10 @@ export default class ModuleList extends React.Component
     this.deleteModule = this.deleteModule.bind(this);
     this.findAllModulesForCourse = this.findAllModulesForCourse.bind(this);
    this.findAllModules = this.findAllModules.bind(this);
+   this.updateModule = this.updateModule.bind(this);
+   this.loadModule = this.loadModule.bind(this);
+   this.renderListOfModules = this.renderListOfModules.bind(this);
     this.moduleService = ModuleService.instance;
-
     self = this;
 
 }
@@ -43,17 +47,20 @@ componentWillReceiveProps(newProps, modules)
 titleChanged(event)
 {
 
-    this.setState({module :{title:event.target.value}});
+    this.setState({module :{title:event.target.value , id: 0}});
+
 }
 
 createModule()
 {
-   // console.log(this.props.courseId,this.state.module.title);
+   console.log(this.props.courseId,this.state.module);
     this.moduleService
-        .createModule(this.props.courseId, {title: this.state.module.title, id : 0})
-        .then(() => {this.findAllModulesForCourse(this.props.courseId)});
+         .createModule(this.props.courseId, this.state.module)
+         .then(() => {this.findAllModulesForCourse(this.props.courseId)});
+
 
     this.inputTitle.value = "";
+
 }
 
 findAllModulesForCourse(courseId)
@@ -82,10 +89,53 @@ deleteModule(moduleId, courseId )
         .then(() => {this.findAllModulesForCourse(courseId)});
 }
 
-updateModule(moduleId,courseId)
+loadModule(courseId,module)
 {
-    alert("updating Module")
+
+    if (module.id !== '' && courseId !== '')
+    {
+        this.inputTitle.value = module.title;
+        lmodule = module;
+        lcourseId = courseId;
+
+        alert("Module Loaded");
+        this.setState({module:module});
+
+    }
+
+
 }
+updateModule()
+    {
+        console.log(this.state.module.title);
+      //  console.log(lmodule.moduleId,lcourseId);
+        this.moduleService
+            .findModuleById(lmodule.id,lcourseId)
+            .then((module) =>
+            {
+             if (module.id === 0 )
+                 alert("No such module exist...Go for Add")
+                else
+                    {
+                 if (lmodule.title === this.state.module.title)
+                 {
+                     alert("No Changes Made..Pls change the name");
+                 }
+                 else
+                 {
+                     lmodule = {title:this.state.module.title, id: lmodule.id}
+
+
+                     this.moduleService
+                         .updateModule(lcourseId,lmodule)
+                         .then(()=> {this.findAllModulesForCourse(lcourseId)});
+                 }
+             }
+    });
+        this.inputTitle.value = "";
+    }
+
+
 
 findAllModules()
 {
@@ -105,7 +155,7 @@ renderListOfModules()
        {
          return <ModuleListItem module = {module} key ={module.id}
                                  delete = {self.deleteModule}
-                                  update = {self.updateModule}
+                                  load = {self.loadModule}
                                     courseId = {courseId}/>
        });
 
@@ -123,10 +173,11 @@ renderListOfModules()
                     <li className= "list-group-item ">
                         <div className= "row">
                         <input  ref={el => this.inputTitle = el}
-                                className="form-control col-10"
+                                className="form-control col-9"
                                 placeholder = "Add New Module"
                                 onChange={this.titleChanged}/>
-                               <i onClick={this.createModule} className="fa fa-plus-circle col-2"></i>
+                               <i onClick={this.createModule} className="fa fa-plus-circle col-1"></i>
+                               <i onClick={this.updateModule} className="fa fa-check-circle col-1"></i>
                         </div>
                     </li>
                     {this.renderListOfModules()}

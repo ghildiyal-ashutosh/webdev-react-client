@@ -24,6 +24,7 @@ export default class LessonTabs extends React.Component {
       this.setLessons = this.setLessons.bind(this);
       this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
       this.findAllLessons = this.findAllLessons.bind(this);
+      this.renderLessons = this.renderLessons.bind(this);
         this.lessonService = LessonService.instance;
       self = this;
 
@@ -89,6 +90,7 @@ export default class LessonTabs extends React.Component {
             .then(() => {this.findAllLessonsForModule(this.state.courseId,this.state.moduleId)});
 
         this.inputTitle.value = "";
+        this.setState({lesson:{title : "",id:0}});
     }
 
     deleteLesson(courseId,moduleId,lessonId)

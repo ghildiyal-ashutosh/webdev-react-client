@@ -72,4 +72,16 @@ export default class ModuleService
                });
     }
 
+    updateModule(courseId,module)
+    {
+        const newUrl = MODULE_API_URL.replace('CID', courseId)
+        return fetch(newUrl,
+        {
+            method: 'PUT',
+                body: JSON.stringify(module),
+            headers:
+            {'Content-Type' : 'application/json'}
+        });
+    }
+
 }
