@@ -33,6 +33,9 @@ export default class CourseRow extends React.Component
                     </select>
 
                 </td>
+                <td>
+                    {this.props.course.created}
+                </td>
                     <td>
                         {this.props.course.modified}
                     </td>

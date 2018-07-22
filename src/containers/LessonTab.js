@@ -3,6 +3,9 @@ import LessonTabItem from '../components/LessonTabItem'
 import LessonService from '../services/LessonService'
 import styles from "../style/style.css"
 var self;
+var lmoduleId = 0;
+var lcourseId = 0;
+var llesson = {title: '', id: 0};
 export default class LessonTabs extends React.Component {
     constructor(props)
     {
@@ -25,7 +28,8 @@ export default class LessonTabs extends React.Component {
       this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
       this.findAllLessons = this.findAllLessons.bind(this);
       this.renderLessons = this.renderLessons.bind(this);
-        this.lessonService = LessonService.instance;
+      this.loadLesson = this.loadLesson.bind(this);
+      this.lessonService = LessonService.instance;
       self = this;
 
     }
@@ -100,9 +104,48 @@ export default class LessonTabs extends React.Component {
             .then(()=> {this.findAllLessonsForModule(courseId,moduleId)});
     }
 
-    updateLesson(courseId,moduleId,lessonId)
+    updateLesson()
     {
-        console.log(courseId,moduleId,lessonId);
+      if (this.state.lesson.title === llesson.title)
+         console.log("No changes made");
+
+       this.lessonService
+           .findLessonById(lcourseId,lmoduleId,llesson.id)
+           .then((lesson) => {
+
+               if (lesson.id === 0)
+                   alert("No Such Lesson Exist...Add Lesson Instead");
+               else
+               {
+                   this.lessonService
+                       .updateLesson(lcourseId,lmoduleId,llesson.id,this.state.lesson)
+                       .then(() => {this.findAllLessonsForModule(lcourseId,lmoduleId)});
+
+               }
+
+               this.inputTitle.value = "";
+           });
+
+
+    }
+
+
+
+    loadLesson(courseId,moduleId,lesson)
+    {
+        if (courseId !== 0 && moduleId !== 0)
+        {
+
+            lmoduleId = moduleId;
+            llesson = lesson;
+            lcourseId = courseId;
+
+            this.setState({lesson:{title:lesson.title,id:lesson.id}});
+
+            this.inputTitle.value = lesson.title;
+            alert("Lesson Loaded");
+        }
+
     }
 
     renderLessons()
@@ -116,7 +159,7 @@ export default class LessonTabs extends React.Component {
                                   moduleId = {moduleId}
                                   lesson = {lesson}
                                   delete = {self.deleteLesson}
-                                  update = {self.updateLesson}
+                                  load = {self.loadLesson}
                                   key = {lesson.id}/>
         });
         return lessons;
@@ -143,6 +186,7 @@ export default class LessonTabs extends React.Component {
                             onChange={this.titleChanged}/>
 
                     <i onClick={this.createLesson} className="fa fa-plus-circle col-1"></i>
+                    <i onClick={this.updateLesson} className="fa fa-check-circle col-1"></i>
                 </div>
 
 

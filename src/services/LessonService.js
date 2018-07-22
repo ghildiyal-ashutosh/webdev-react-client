@@ -65,14 +65,25 @@ export default class ModuleService {
 
     }
 
-    findLessonById(courseId,moduleId,lessonId)
+    findLessonById(courseId, moduleId, lessonId) {
+        var url = LESSON_API_URL.replace('CID', courseId).replace('MID', moduleId);
+        return fetch(url + '/' + lessonId)
+            .then(function (response) {
+                return response.json();
+
+            });
+    }
+
+    updateLesson(courseId, moduleId, lessonId, lesson)
     {
         var url = LESSON_API_URL.replace('CID', courseId).replace('MID', moduleId);
-        return fetch(url+'/'+lessonId)
-                      .then(function (response)
-                      {
-                          return response.json();
+        return fetch(url + '/' + lessonId,
+            {
+                method: 'PUT',
+                body: JSON.stringify(lesson),
+                headers:
+                    {'Content-Type': 'application/json'}
+            });
 
-                      });
     }
 }

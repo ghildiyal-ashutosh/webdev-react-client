@@ -122,7 +122,10 @@ export default class CourseList extends React.Component
                           <th>
                               Owned By
                           </th>
-                          <th> Date/Time of Last Modification </th>
+                      <th>
+                         Time of Creation
+                      </th>
+                          <th> Time of Last Modification </th>
                       <th> Action</th>
                   </tr>
 
