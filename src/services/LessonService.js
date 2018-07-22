@@ -1,6 +1,6 @@
 let _singleton = Symbol();
-const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
-
+//const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
+ const LESSON_API_URL = 'https://react-client-ashu95.herokuapp.com/api/course/CID/module/MID/lesson'
 export default class ModuleService {
     constructor(singletonToken) {
         if (_singleton !== singletonToken) {
@@ -15,7 +15,7 @@ export default class ModuleService {
     }
 
     findAllLessons() {
-        var url = "http://localhost:8080/api/user/course/module/lesson/findAllLesson"
+        var url = "https://react-client-ashu95.herokuapp.com/api/user/course/module/lesson/findAllLesson"
         return fetch(url)
             .then(function (response) {
                 return response.json();
@@ -56,7 +56,7 @@ export default class ModuleService {
 
 
     findAllLessons() {
-        var url = "http://localhost:8080/api/course/module/lesson/findAllLessons"
+        var url = "https://react-client-ashu95.herokuapp.com/api/course/module/lesson/findAllLessons"
         return fetch(url)
             .then(function (resposne) {
                 return resposne.json();

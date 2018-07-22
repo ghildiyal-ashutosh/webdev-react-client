@@ -1,5 +1,6 @@
 let _singleton = Symbol();
-const MODULE_API_URL = 'http://localhost:8080/api/course/CID/module';
+//const MODULE_API_URL = 'http://localhost:8080/api/course/CID/module';
+const MODULE_API_URL = 'https://react-client-ashu95.herokuapp.com/api/course/CID/module'
 
 export default class ModuleService
 {
@@ -65,7 +66,7 @@ export default class ModuleService
 
     findAllModules()
     {
-        return fetch('http://localhost:8080/api/course/findAllModules')
+        return fetch('https://react-client-ashu95.herokuapp.com/api/course/findAllModules')
                .then(function(response)
                {
                    return response.json();
