@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="80b266ae-9063-433d-ac96-73a4bdd08e00" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/services/CourseService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/CourseService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/LessonService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/LessonService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ModuleService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ModuleService.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +22,7 @@
         <entry file="file://$PROJECT_DIR$/src/services/CourseService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -28,8 +30,8 @@
       <file leaf-file-name="ModuleService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/ModuleService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+            <state relative-caret-position="268">
+              <caret line="68" column="52" selection-start-line="68" selection-start-column="52" selection-end-line="68" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -37,8 +39,8 @@
       <file leaf-file-name="LessonService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/LessonService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="870">
+              <caret line="58" column="49" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -84,9 +86,9 @@
         <option value="$PROJECT_DIR$/src/containers/CourseList.js" />
         <option value="$PROJECT_DIR$/src/components/LessonTabItem.js" />
         <option value="$PROJECT_DIR$/src/containers/LessonTab.js" />
+        <option value="$PROJECT_DIR$/src/services/CourseService.js" />
         <option value="$PROJECT_DIR$/src/services/ModuleService.js" />
         <option value="$PROJECT_DIR$/src/services/LessonService.js" />
-        <option value="$PROJECT_DIR$/src/services/CourseService.js" />
       </list>
     </option>
   </component>
@@ -184,12 +186,12 @@
       <workItem from="1531951059482" duration="66344000" />
       <workItem from="1532136288641" duration="18881000" />
       <workItem from="1532297308001" duration="676000" />
-      <workItem from="1532300418811" duration="1041000" />
+      <workItem from="1532300418811" duration="1576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138848000" />
+    <option name="totallyTimeSpent" value="139383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
@@ -621,24 +623,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/ModuleService.js">
+    <entry file="file://$PROJECT_DIR$/src/services/LessonService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+        <state relative-caret-position="870">
+          <caret line="58" column="49" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/LessonService.js">
+    <entry file="file://$PROJECT_DIR$/src/services/ModuleService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        <state relative-caret-position="268">
+          <caret line="68" column="52" selection-start-line="68" selection-start-column="52" selection-end-line="68" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/CourseService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
         </state>
       </provider>
     </entry>
