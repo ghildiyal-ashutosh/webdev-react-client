@@ -89,12 +89,16 @@ export default class LessonTabs extends React.Component {
     {
 
       //console.log(this.state.courseId,this.state.moduleId);
-        this.lessonService
-            .createLesson(this.state.courseId,this.state.moduleId,this.state.lesson)
-            .then(() => {this.findAllLessonsForModule(this.state.courseId,this.state.moduleId)});
+        if (this.state.lesson.title !== '') {
+            this.lessonService
+                .createLesson(this.state.courseId, this.state.moduleId, this.state.lesson)
+                .then(() => {
+                    this.findAllLessonsForModule(this.state.courseId, this.state.moduleId)
+                });
 
-        this.inputTitle.value = "";
-        this.setState({lesson:{title : "",id:0}});
+            this.inputTitle.value = "";
+            this.setState({lesson: {title: "", id: 0}});
+        }
     }
 
     deleteLesson(courseId,moduleId,lessonId)
@@ -106,7 +110,7 @@ export default class LessonTabs extends React.Component {
 
     updateLesson()
     {
-      if (this.state.lesson.title === llesson.title)
+      if (this.state.lesson.title === llesson.title || this.state.lesson.title === '')
          console.log("No changes made");
 
        this.lessonService

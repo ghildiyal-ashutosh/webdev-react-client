@@ -53,13 +53,17 @@ titleChanged(event)
 
 createModule()
 {
-   console.log(this.props.courseId,this.state.module);
-    this.moduleService
-         .createModule(this.props.courseId, this.state.module)
-         .then(() => {this.findAllModulesForCourse(this.props.courseId)});
+   if (this.state.module.title !== '')
+   {
+       this.moduleService
+           .createModule(this.props.courseId, this.state.module)
+           .then(() => {
+               this.findAllModulesForCourse(this.props.courseId)
+           });
 
 
-    this.inputTitle.value = "";
+       this.inputTitle.value = "";
+   }
 
 }
 
@@ -117,7 +121,7 @@ updateModule()
                  alert("No such module exist...Go for Add")
                 else
                     {
-                 if (lmodule.title === this.state.module.title)
+                 if (lmodule.title === this.state.module.title || this.state.module.title === '')
                  {
                      alert("No Changes Made..Pls change the name");
                  }
