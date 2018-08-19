@@ -1,6 +1,6 @@
 let _singleton = Symbol();
-// const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
-const LESSON_API_URL = 'https://webdev-2.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic'
+ const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
+// const LESSON_API_URL = 'https://webdev-2.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic'
 export default class TopicService {
     constructor(singletonToken) {
         if (_singleton !== singletonToken) {
@@ -51,7 +51,7 @@ export default class TopicService {
 
 
     findAllTopics() {
-        var url = "https://webdev-2.herokuapp.com/api/course/module/lesson/topic/findAllTopics"
+        var url = "http://localhost:8080/api/course/module/lesson/topic/findAllTopics"
         return fetch(url)
             .then(function (resposne) {
                 return resposne.json();
