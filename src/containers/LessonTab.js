@@ -193,6 +193,5 @@ export default class LessonTabs extends React.Component {
                     <i onClick={this.updateLesson} className="fa fa-check-circle col-1"></i>
                 </div>
 
-
             </ul>
     );}}

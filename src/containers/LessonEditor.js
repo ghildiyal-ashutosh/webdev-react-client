@@ -2,6 +2,7 @@ import React from 'react'
 import LessonService from "../services/LessonService"
 import  TopicPill from "../containers/TopicPill"
 import {Route} from "react-router-dom"
+
 import styles from "../style/style.css"
 
 export default class LessonEditor extends React.Component
@@ -66,6 +67,7 @@ export default class LessonEditor extends React.Component
                 <TopicPill courseId = {this.state.courseId}
                            moduleId = {this.state.moduleId}
                            lessonId ={this.state.lessonId}/>
+
 
             </div>
         )

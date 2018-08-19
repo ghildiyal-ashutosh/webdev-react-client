@@ -1,7 +1,7 @@
 let _singleton = Symbol();
-//const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
- const LESSON_API_URL = 'https://webdev-2.herokuapp.com/api/course/CID/module/MID/lesson'
-export default class ModuleService {
+const LESSON_API_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
+ //const LESSON_API_URL = 'https://webdev-2.herokuapp.com/api/course/CID/module/MID/lesson'
+export default class LessonService {
     constructor(singletonToken) {
         if (_singleton !== singletonToken) {
             throw new Error('Singleton !!!');
@@ -10,12 +10,12 @@ export default class ModuleService {
 
     static get instance() {
         if (!this[_singleton])
-            this[_singleton] = new ModuleService(_singleton)
+            this[_singleton] = new LessonService(_singleton)
         return (this[_singleton]);
     }
 
     findAllLessons() {
-        var url = "https://webdev-2.herokuapp.com/api/user/course/module/lesson/findAllLesson"
+        var url = "http://localhost:8080/api/user/course/module/lesson/findAllLesson"
         return fetch(url)
             .then(function (response) {
                 return response.json();
@@ -56,7 +56,7 @@ export default class ModuleService {
 
 
     findAllLessons() {
-        var url = "https://webdev-2.herokuapp.com/api/course/module/lesson/findAllLessons"
+        var url = "http://localhost:8080/api/course/module/lesson/findAllLessons"
         return fetch(url)
             .then(function (resposne) {
                 return resposne.json();
